@@ -26,3 +26,13 @@ export function getInterview(state, interview) {
     } 
   }
 };
+
+export function updateSpots (state, day) {
+  const specificDay = getAppointmentsForDay(state, state.day);
+  let spot = 0;
+  for(let i = 0; i < specificDay.length; i++) {
+    if (specificDay[i].interview === null) {
+      spot += 1;
+    } 
+  } return spot;
+}
