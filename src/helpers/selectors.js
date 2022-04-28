@@ -1,3 +1,4 @@
+//function that gets all appointments for the selected day as an array
 export function getAppointmentsForDay(state, day) {
   const filteredDay = state.days.filter(appointment => appointment.name === day);
   if (!filteredDay || filteredDay.length === 0) {
@@ -7,6 +8,7 @@ export function getAppointmentsForDay(state, day) {
   }
 };
 
+//function that gets all interviewers for selected day as an array
 export function getInterviewersForDay(state, day) {
   const filteredDay = state.days.filter(appointment => appointment.name === day);
   if (!filteredDay || filteredDay.length === 0) {
@@ -16,6 +18,7 @@ export function getInterviewersForDay(state, day) {
   }
 };
 
+//function that gets a single interview in the form of an object
 export function getInterview(state, interview) {
   if (!interview) {
     return null;
@@ -27,6 +30,7 @@ export function getInterview(state, interview) {
   }
 };
 
+//function that returns the number of total spots without a current appointment
 export function updateSpots (state, day) {
   const specificDay = getAppointmentsForDay(state, state.day);
   let spot = 0;

@@ -24,6 +24,10 @@ export default function useApplicationData() {
     })
   }, []);
 
+  /*function that saves an appointment and updates the api
+    takes a number for the appointment id
+    takes an object containing student name and interviewer id
+  */
   function bookInterview(id, interview) {
 
     const appointment = {
@@ -40,6 +44,7 @@ export default function useApplicationData() {
       if (day.appointments.includes(id)) {
         const existingInterviewCheck = state.appointments[id].interview ? false : true;
         return {...day, spots: existingInterviewCheck ? updateSpots(state, day) - 1 : updateSpots(state,day)}
+                                                        //^remove 1 here to book up this spot after adding this booking
       } else {
         return day;
       }
@@ -54,6 +59,10 @@ export default function useApplicationData() {
     );
   };
 
+  /*
+  function that removes an apointment and updates the api
+  takes the corresponding interview id
+  */
   function cancelInterview(id) {
 
     const appointment = {
@@ -68,7 +77,7 @@ export default function useApplicationData() {
 
     const days = state.days.map((day) => {
       if (day.appointments.includes(id)) {
-        return {...day, spots: updateSpots(state, day) + 1}
+        return {...day, spots: updateSpots(state, day) + 1} //add 1 here to free up this spot after removing this booking
       } else {
         return day;
       }

@@ -25,6 +25,11 @@ export default function Appointment(props) {
     props.interview ? SHOW : EMPTY
   );
 
+  /*
+  function that saves the input of the form component and updates the api
+  takes a string for the name
+  takes a number for the interviewer
+  */ 
   function save(name, interviewer) {
     const interview = {
       student: name,
@@ -37,6 +42,8 @@ export default function Appointment(props) {
       .catch(error => transition(ERROR_SAVE, true));
   };
 
+  
+  //function that deletes a given interview and updates the api
   function destroy(event) {
     transition(DELETING, true);
     props

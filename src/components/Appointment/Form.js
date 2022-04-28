@@ -8,16 +8,19 @@ export default function Form(props) {
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
   const [error, setError] = useState("");
 
+  //function that clears the inputs in the form component
   const reset = () => {
     setStudent("");
     setInterviewer(null);
   }
 
+  //function that cancels and resets back to the last status of the appointment component
   const cancel = () => {
     reset();
     props.onCancel();
   }
 
+  //function that checks for valid input for both name and interviewer before allowing the interview to be saved
   function validate() {
     if (student === "") {
       setError("Student name cannot be blank");
